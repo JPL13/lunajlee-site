@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>First 90 Days — Teen Money Posts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f3ec; --surface:#fffdf8; --surface2:#ffffff;
+  --ink:#17202a; --muted:#5b6573; --line:#e3ddd0;
+  --teal:#0e4f4a; --teal2:#14665f; --coral:#d94f30; --coral-soft:#fdeee9;
+  --amber:#e9a426; --amber-soft:#fdf3d7; --teal-soft:#e6f2ef;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(23,32,42,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#10161f; --surface:#171f2a; --surface2:#1c2634; --ink:#eef2f5; --muted:#a7b0bc; --line:#2a3646; --teal:#7fd1c5; --teal2:#9adcd2; --coral:#ff8a6b; --coral-soft:#3a2420; --amber:#f2c14e; --amber-soft:#332b16; --teal-soft:#18332f; --shadow:0 10px 30px rgba(0,0,0,.35);}
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Libre Franklin",system-ui,sans-serif;line-height:1.6}
+a{color:var(--teal2)} img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.reading{max-width:760px;margin:0 auto}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.brand{font-weight:900;letter-spacing:-.02em;font-size:15px}
+.brand span{color:var(--coral)}
+.topnav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.topnav a{font-size:13px;font-weight:700;text-decoration:none;color:var(--ink);padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.topnav a:hover{border-color:var(--teal)}
+/* hero */
+.hero{padding:36px 0 10px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+.hero h1{font-family:"Newsreader",serif;font-size:clamp(42px,7vw,72px);line-height:.95;letter-spacing:-.02em;margin:10px 0 14px;font-weight:600}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:680px;margin:0}
+.hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.stat{flex:1 1 160px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font-size:22px;line-height:1}
+.stat span{font-size:13px;color:var(--muted)}
+.hero-img{border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#f3ede1}
+.hero-img img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:left center}
+.caption{font-size:13px;color:var(--muted);margin-top:8px}
+/* TOC */
+.toc{padding:28px 0 8px}
+.toc h2,.section-head h2{font-family:"Newsreader",serif;font-size:30px;margin:0 0 6px;letter-spacing:-.01em}
+.toc p{color:var(--muted);margin:0 0 16px}
+.toc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.toc-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:var(--ink);display:flex;flex-direction:column}
+.toc-card:hover{border-color:var(--teal)}
+.toc-card img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.toc-body{padding:16px}
+.chip{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:var(--teal-soft);color:var(--teal)}
+.chip.coral{background:var(--coral-soft);color:var(--coral)} .chip.amber{background:var(--amber-soft);color:#8a5f00}
+@media(prefers-color-scheme:dark){.chip.amber{color:var(--amber)}}
+.toc-body h3{margin:10px 0 6px;font-size:17px;line-height:1.25;letter-spacing:-.01em}
+.toc-body p{font-size:14px;color:var(--muted);margin:0}
+.toc-num{font-family:"Newsreader",serif;font-size:28px;font-weight:600;margin-top:12px}
+.toc-num small{font-size:13px;font-family:"Libre Franklin",sans-serif;color:var(--muted);font-weight:400}
+/* calculator */
+.calc-section{margin:36px 0}
+.calc-shell{background:#0e3d3a;color:#eaf6f3;border-radius:24px;padding:clamp(20px,4vw,36px);box-shadow:var(--shadow)}
+@media(prefers-color-scheme:dark){.calc-shell{background:#0b2e2b}}
+.calc-shell h2{font-family:"Newsreader",serif;font-size:clamp(28px,4vw,38px);margin:0 0 6px;line-height:1.05}
+.calc-shell .sub{color:#bfe0d9;margin:0 0 20px;max-width:640px}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}
+.field{margin-bottom:18px}
+.field label{display:flex;justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:8px}
+.field label output{font-variant-numeric:tabular-nums;background:rgba(255,255,255,.12);padding:2px 10px;border-radius:999px}
+input[type=range]{width:100%;accent-color:#e9a426;height:28px}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
+.presets button{border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit;font-size:13px}
+.presets button.active{background:#e9a426;color:#17202a;border-color:#e9a426}
+.results{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.result b{display:block;font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
+.result span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#bfe0d9;font-weight:700}
+.warn{display:none;margin-top:14px;background:#5c2113;border:1px solid #ff8a6b;color:#ffe1d6;padding:12px 14px;border-radius:12px;font-size:14px}
+.warn.show{display:block}
+.chart-wrap{margin-top:16px;background:rgba(0,0,0,.18);border-radius:12px;padding:12px}
+.chart-wrap p{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#bfe0d9}
+svg text{fill:#bfe0d9;font-size:11px}
+/* articles */
+article{padding:44px 0 10px;border-top:1px solid var(--line);margin-top:36px}
+article:first-of-type{border-top:none}
+.article-head{max-width:760px;margin:0 auto}
+.article-head h2{font-family:"Newsreader",serif;font-size:clamp(32px,5vw,46px);line-height:1.02;letter-spacing:-.02em;margin:12px 0 10px;font-weight:600}
+.dek{font-family:"Newsreader",serif;font-style:italic;font-size:18px;color:var(--muted);margin:0 0 8px}
+.meta{font-size:13px;color:var(--muted);margin-bottom:18px}
+.article-img{max-width:900px;margin:0 auto 8px;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.article-img img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.prose{max-width:760px;margin:0 auto;font-family:"Newsreader",serif;font-size:19px;line-height:1.75}
+.prose p{margin:0 0 18px}
+.prose h3{font-family:"Libre Franklin",sans-serif;font-size:20px;letter-spacing:-.01em;margin:30px 0 10px;line-height:1.3}
+.prose strong{font-weight:600}
+.question{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);padding:16px 18px;border-radius:0 14px 14px 0;margin:22px 0;font-size:18px}
+.callout{background:var(--teal-soft);border-radius:14px;padding:18px;margin:22px 0}
+.callout.coral{background:var(--coral-soft)} .callout.amber{background:var(--amber-soft)}
+.callout h4{margin:0 0 8px;font-family:"Libre Franklin",sans-serif;font-size:15px}
+.callout p,.callout li{font-size:17px}
+.action{background:var(--ink);color:var(--bg);border-radius:16px;padding:20px;margin:28px 0}
+.action h4{margin:0 0 8px;font-family:"Libre Franklin",sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.action p{margin:0;font-size:17px}
+.table-wrap{overflow:hidden;border:1px solid var(--line);border-radius:14px;margin:20px 0;background:var(--surface2)}
+table{width:100%;border-collapse:collapse;font-family:"Libre Franklin",sans-serif;font-size:15px}
+th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:800;background:var(--teal-soft);border-bottom:none}
+ul.tight li,ol.tight li{margin-bottom:8px}
+.paths{display:grid;gap:12px;margin:20px 0}
+.path{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface)}
+.path h4{margin:0 0 6px;font-family:"Libre Franklin",sans-serif;font-size:15px}
+.path p{font-size:17px;margin:0 0 6px}
+.path .big{font-family:"Libre Franklin",sans-serif;font-weight:800;font-size:15px}
+/* footer */
+.end{margin:44px 0 50px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px}
+.end h2{font-family:"Newsreader",serif;margin:0 0 8px;font-size:28px}
+.end p{color:var(--muted);margin:0 0 12px;max-width:680px}
+footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
+@media(max-width:860px){.toc-grid{grid-template-columns:1fr}.calc-grid{grid-template-columns:1fr}.topnav a{padding:6px 8px;font-size:12px}.prose{font-size:18px} th,td{padding:10px}.topbar-inner{flex-direction:column;align-items:flex-start;gap:8px}.topnav{justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+<div class="brand">FIRST 90 DAYS <span>•</span> Teen Money Playbook</div>
+<nav class="topnav" aria-label="Posts">
+<a href="#paycheck">First Paycheck</a><a href="#apartment">First Apartment</a><a href="#credit">Credit Cards</a><a href="#calculator">Calculator</a>
+</nav></div></header>
+
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">Free to read • 3 posts + 1 calculator</div>
+<h1>Your first 90 days<br>on your <em>own money.</em></h1>
+<p class="lede">The first paycheck, the first apartment, and the first credit card — explained with real numbers, not lectures. Start anywhere. Each post ends with one thing to do tonight.</p>
+<div class="hero-stats">
+<div class="stat"><b>≈ $2,724</b><span>actual take-home on $19/hr in California — Ch. 1</span></div>
+<div class="stat"><b>≈ $2,670</b><span>real cost to move into a “$1,050” apartment — Ch. 4</span></div>
+<div class="stat"><b>$925.71</b><span>interest on a $1,200 laptop at minimum payments — Ch. 5</span></div>
+</div>
+<div class="hero-img"><img src="assets/hero.webp" alt="Illustration of a teenager carrying a moving box out of a front door, holding keys and a paycheck"></div>
+<p class="caption">Moving out is exciting. The money part is learnable — especially when you see the numbers before they surprise you.</p>
+</section>
+
+<section class="toc" aria-label="Choose a post">
+<h2>Pick your moment</h2>
+<p>Read in order, or jump to the one that’s about to happen to you.</p>
+<div class="toc-grid">
+<a class="toc-card" href="#paycheck"><img src="assets/paycheck.webp" alt="Illustration of a pay stub under a magnifying glass, with coins and a calculator"><div class="toc-body"><span class="chip">Chapter 1</span><h3>Your First Paycheck: Where the Money Goes Before You See It</h3><p>Why $19/hr isn’t $3,040 a month — and the five deductions in between.</p><div class="toc-num">$3,293 → $2,724 <small>gross to take-home</small></div></div></a>
+<a class="toc-card" href="#apartment"><img src="assets/apartment.webp" alt="Illustration of a first apartment with stacked moving boxes, a lamp and plants by a window"><div class="toc-body"><span class="chip amber">Chapter 4</span><h3>Your First Apartment: Why $1,050 Rent Really Costs $2,700</h3><p>Deposit, fees, and the forgotten-stuff run nobody warns you about.</p><div class="toc-num">$446 / month <small>for 6 months gets you there</small></div></div></a>
+<a class="toc-card" href="#credit"><img src="assets/credit.webp" alt="Illustration of a credit card set like a trap above a laptop"><div class="toc-body"><span class="chip coral">Chapter 5</span><h3>Credit Cards: The 21-Day Free Loan (and the Trap)</h3><p>Pay in full and it’s free. Pay the minimum and a laptop costs double.</p><div class="toc-num">61 months <small>to pay off $1,200 at $35/mo</small></div></div></a>
+</div>
+</section>
+
+<section class="calc-section" id="calculator">
+<div class="calc-shell">
+<h2>Minimum Payment Calculator</h2>
+<p class="sub">Try Chapter 5 yourself. Start with Maya’s numbers — $1,200 at 24.99% APR, $35 a month — then slide the payment up and watch the timeline collapse.</p>
+<div class="calc-grid">
+<div>
+<div class="field"><label>Balance <output id="balOut">$1,200</output></label><input type="range" id="bal" min="100" max="10000" step="50" value="1200"></div>
+<div class="field"><label>APR <output id="aprOut">24.99%</output></label><input type="range" id="apr" min="0" max="36" step="0.01" value="24.99"></div>
+<div class="field"><label>Monthly payment <output id="payOut">$35</output></label><input type="range" id="pay" min="10" max="500" step="5" value="35"></div>
+<div class="presets" role="group" aria-label="Presets">
+<button type="button" data-preset="35" class="preset active">Minimum only — $35</button>
+<button type="button" data-preset="60" class="preset">+$25 extra — $60</button>
+<button type="button" data-preset="85" class="preset">+$50 extra — $85</button>
+<button type="button" data-preset="150" class="preset">$150 / month</button>
+</div>
+<p style="font-size:13px;color:#bfe0d9;margin:10px 0 0">Assumes no new charges and a fixed payment every month. Interest is charged monthly at APR ÷ 12.</p>
+</div>
+<div>
+<div class="results">
+<div class="results-grid">
+<div class="result"><span>Time to pay off</span><b id="monthsOut">61 months</b><small id="yearsOut">about 5 years, 1 month</small></div>
+<div class="result"><span>Interest you’ll pay</span><b id="intOut">$925.71</b><small id="intNote">on top of the balance</small></div>
+<div class="result"><span>Total paid</span><b id="totalOut">$2,125.71</b><small>balance + interest</small></div>
+<div class="result"><span>First month’s interest</span><b id="firstIntOut">$24.99</b><small>before any principal moves</small></div>
+</div>
+<div class="warn" id="warnBox">⚠️ This payment doesn’t cover the first month’s interest, so the balance would grow instead of shrinking. Raise the payment above the first month’s interest to start making progress.</div>
+<div class="chart-wrap"><p>Balance over time</p><svg id="chart" viewBox="0 0 520 180" width="100%" height="180" role="img" aria-label="Chart showing balance declining to zero over time"></svg></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ CHAPTER 1 ============ -->
+<article id="paycheck">
+<div class="article-head">
+<span class="chip">Chapter 1 • First Paycheck</span>
+<h2>Your First Paycheck: Where the Money Goes Before You See It</h2>
+<p class="dek">Numbers below are a real worked example: $19/hr, 40 hours a week, California, single filer, standard deduction, no 401(k) or health premiums. Your exact numbers will differ a bit — the shape won’t.</p>
+<p class="meta">6-minute read • Start here if you just got hired</p>
+</div>
+<div class="article-img"><img src="assets/paycheck.webp" alt="Illustration of a pay stub under a magnifying glass, with coins and a calculator"></div>
+<div class="prose">
+<div class="question"><strong>Your question:</strong> “I make $19 an hour — so why isn’t my check $3,040?”</div>
+<p>Do the math in your head and it feels obvious: $19 × 40 hours × 4 weeks = $3,040 a month. Then the first check lands and it’s… not that. Not even close. Two separate things ate your money, and nobody warns you about either of them.</p>
+<h3>Trap 1: A month is not 4 weeks</h3>
+<p>Four weeks is 28 days. A real month averages about 4.33 weeks. So your actual gross pay — the full amount you earn, before anything is taken out — is:</p>
+<p><strong>$19 × 40 × 52 weeks ÷ 12 months = $3,293 a month</strong> ($39,520 a year)</p>
+<p>That’s <em>more</em> than $3,040. Good news, right? Hold on. Most jobs pay every two weeks, not monthly, so the check you actually hold is a biweekly one: <strong>$1,520 gross</strong> (80 hours × $19). And before that money reaches your bank account, five different hands take a cut.</p>
+<h3>Trap 2: The five deductions</h3>
+<p>Every paycheck in America gets processed the same way: your employer is required to skim several taxes off the top and send them to the government before paying you. This is called <strong>withholding</strong>, and it’s not optional, negotiable, or a scam — it’s just invisible until you read the stub. Here’s the full journey of that $3,293 monthly gross:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Deduction</th><th class="num">Per month</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td>Federal income tax</td><td class="num">−$214</td><td>The big one. Based on your income after the standard deduction — the first chunk of income the IRS doesn’t tax at all.</td></tr>
+<tr><td>Social Security</td><td class="num">−$204</td><td>A flat 6.2% of gross. Funds retirement benefits; yes, even yours, decades from now.</td></tr>
+<tr><td>Medicare</td><td class="num">−$48</td><td>A flat 1.45% of gross. Health coverage for people 65+.</td></tr>
+<tr><td>California income tax</td><td class="num">−$64</td><td>Your state’s cut. Lower than federal, but not zero.</td></tr>
+<tr><td>California SDI</td><td class="num">−$40</td><td>1.2% for state disability insurance — pays out if you’re injured or ill and can’t work.</td></tr>
+<tr class="total"><td>Take-home pay</td><td class="num">≈ $2,724</td><td>What actually hits your account.</td></tr>
+</tbody></table></div>
+<p>Per biweekly check, that’s about <strong>$1,257 deposited instead of $1,520 earned.</strong> Roughly $263 per check — about 17% — never touches your bank account.</p>
+<p>Nothing here is a mistake. If your check looks “wrong,” run this table before you panic: in almost every case, it’s just the five deductions doing exactly what they’re supposed to do.</p>
+<h3>Read your pay stub like a detective</h3>
+<p>Your pay stub lists all of this — most people never look. The four lines that matter:</p>
+<ul class="tight">
+<li><strong>Gross pay</strong> — hours × rate. Check this first: if your hours are wrong, everything downstream is wrong.</li>
+<li><strong>Federal withholding</strong> — compare it to your expectation. Way too high or way too low means your W-4 needs attention (next section).</li>
+<li><strong>Year-to-date (YTD) columns</strong> — your running totals since January 1. This is how you catch a slow drip of small errors.</li>
+<li><strong>Net pay</strong> — the deposit. It should match what lands in your account, to the cent.</li>
+</ul>
+<p>Thirty seconds per check. The one time it catches a missing overtime shift, it pays for a lifetime of looking.</p>
+<h3>The W-4, and why a giant refund isn’t a prize</h3>
+<p>When you started the job, you filled out a W-4 — the form that tells your employer <em>how much</em> federal tax to withhold. Fill it in sloppily and one of two things happens:</p>
+<div class="callout amber"><h4>Too much withheld</h4><p>You get a big tax refund next spring. People celebrate this. They shouldn’t. A $1,800 refund means you lent the IRS $150 a month, interest-free, all year — money that could have been in your account each payday instead. A refund isn’t a bonus. It’s your own money, returned late.</p></div>
+<div class="callout coral"><h4>Too little withheld</h4><p>No refund — instead, you <em>owe</em> in April, possibly with a penalty. That’s worse.</p></div>
+<p>The goal is boring: withhold about the right amount, so April is a non-event. If your situation is simple (one job, no other income), the standard W-4 does this fine. If you get a refund over ~$500 or owe anything at all, redo the W-4 — your employer’s payroll or HR can point you to the form, and the IRS has a free estimator online.</p>
+<div class="action"><h4>Your one action tonight</h4><p>Pull up your most recent pay stub (paper, payroll app, wherever it lives) and label every single line: gross, each deduction, net. If you can’t explain a line, look it up before your next check. From now on, budget with the <strong>net</strong> number — the $2,724, not the $3,293. Every budget built on gross pay is a plan to come up short.</p></div>
+<p><em>This post is one chapter of “First 90 Days: The Money Playbook for Teens Moving Out” — 12 chapters on the first three months of financial independence, every one with real numbers, plus interactive calculators to run your own.</em></p>
+</div>
+</article>
+
+<!-- ============ CHAPTER 4 ============ -->
+<article id="apartment">
+<div class="article-head">
+<span class="chip amber">Chapter 4 • First Apartment</span>
+<h2>Your First Apartment: Why $1,050 Rent Really Costs $2,700</h2>
+<p class="dek">The worked example below uses a $1,050/month rent share in California — scale the line items to your city; the shape is the same everywhere.</p>
+<p class="meta">6-minute read • Read before you tour a single place</p>
+</div>
+<div class="article-img"><img src="assets/apartment.webp" alt="Illustration of a first apartment with stacked moving boxes, a lamp and plants by a window"></div>
+<div class="prose">
+<div class="question"><strong>Your question:</strong> “Rent is $1,050 — so I need $1,050 to move in, right?”</div>
+<p>That’s the number on the listing, and it’s the number everyone saves for. Then move-in week arrives with a stack of other charges nobody mentioned, and the “fully funded” apartment fund runs out before the truck is loaded. Rent is the <em>monthly</em> price. Moving in has its own price tag — and for a typical first place, it’s about <strong>two and a half months of rent</strong>.</p>
+<h3>The real move-in bill</h3>
+<p>Here’s the full stack for a $1,050 rent share, itemized:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Cost</th><th class="num">Amount</th><th>Why it exists</th></tr></thead>
+<tbody>
+<tr><td>First month’s rent</td><td class="num">$1,050</td><td>Due at signing, before you sleep there once.</td></tr>
+<tr><td>Security deposit</td><td class="num">$1,050</td><td>In California, capped by law at one month’s rent. The landlord holds it against damage and unpaid rent.</td></tr>
+<tr><td>Application fee</td><td class="num">$45</td><td>Pays for your credit/background check. Charged per applicant, gone whether you get the place or not.</td></tr>
+<tr><td>Utilities setup &amp; deposits</td><td class="num">$125</td><td>Electric, gas, internet: activation fees and sometimes a deposit for a first-time account holder.</td></tr>
+<tr><td>The forgotten-stuff run</td><td class="num">$300</td><td>Shower curtain, trash can, plunger, cleaning supplies, basic dishes, a lamp, toilet paper. Nobody budgets for this. Everybody buys it, in one expensive weekend.</td></tr>
+<tr><td>Moving</td><td class="num">$100</td><td>Truck rental, or gas and pizza for friends with a pickup.</td></tr>
+<tr class="total"><td>True move-in total</td><td class="num">≈ $2,670</td><td>Call it $2,700.</td></tr>
+</tbody></table></div>
+<p>Read that middle column again: <strong>you need roughly $2,700 in hand to move into a “$1,050 apartment”</strong> — and that’s <em>before</em> your first month of groceries, gas, or the Wi-Fi bill. Sign the lease with only $1,050 saved and you’re starting independence in a hole, which is exactly how first credit cards get maxed out (see the chapter on that trap — the interest math is brutal).</p>
+<h3>Roommates split costs, not just rent</h3>
+<p>A roommate halves the rent line. It does not automatically halve anything else. The fights that end friendships are never about rent — they’re about the electric bill in a name nobody wants to pay, the deposit split when one person moves out early, and whose name is on the internet account.</p>
+<p>Settle three things in writing (a shared note is fine) before you sign:</p>
+<ol class="tight">
+<li><strong>Every recurring bill</strong> — utilities, internet, household supplies — and how it’s split.</li>
+<li><strong>The deposit</strong> — who paid what share, and what happens to it if someone leaves early.</li>
+<li><strong>The exit</strong> — how much notice you owe each other, beyond what the lease says.</li>
+</ol>
+<p>Ten awkward minutes now, or one very awkward month later.</p>
+<h3>The lease: three clauses that actually bite</h3>
+<p>A lease is 15 pages of boilerplate wrapped around three clauses that can cost you real money:</p>
+<ul class="tight">
+<li><strong>Notice period.</strong> How far ahead you must say you’re leaving — often 30 or 60 days. Miss it and you can owe another month’s rent on a place you no longer live in.</li>
+<li><strong>Deposit deductions.</strong> What the landlord can charge against your deposit: cleaning, repainting, “damage.” Your defense is free: <strong>photograph every room, wall, and appliance on move-in day</strong>, with timestamps. Deposits get disputed with evidence, not arguments.</li>
+<li><strong>Auto-renewal.</strong> Many leases quietly roll into a new term or a pricier month-to-month rate if you do nothing. Put the renewal date in your calendar the day you sign.</li>
+</ul>
+<h3>The savings math: getting to $2,700 on purpose</h3>
+<p>Say move-in is six months away. Saving at 4% in a high-yield savings account, the Interest Theory Calculator shows <strong>$446 a month for 6 months gets you to $2,700</strong> — the small interest tail covers the rounding. Run your own version: different target, different deadline, your actual monthly number. The point isn’t the $446; it’s that a move-in date minus a monthly amount is a <em>plan</em>, and “$1,050-ish, somehow” is not.</p>
+<p>Open the <a href="https://muse.ai/s/interest-theory-calculator-jxv6hhpbxyxzxn3/27rLC8XLXFbcUABgYxsY6jqsmPrz146cJiAiyDpq8JI" target="_blank" rel="noopener">Interest Theory Calculator</a> and plug in your real numbers: your rent share doubled-and-a-half as the target, your move-in month as the deadline.</p>
+<div class="action"><h4>Your one action tonight</h4><p>Before you tour a single apartment, price <strong>your</strong> move-in number: your rent share, plus a one-month deposit, plus ~$550 of fees, setup, and forgotten stuff. Write that number down. That’s the actual goal — save to <em>it</em>, not to the listing price, and move-in week stops being an ambush.</p></div>
+<p><em>This post is one chapter of “First 90 Days: The Money Playbook for Teens Moving Out” — 12 chapters on the first three months of financial independence, every one with real numbers, plus interactive calculators to run your own.</em></p>
+</div>
+</article>
+
+<!-- ============ CHAPTER 5 ============ -->
+<article id="credit">
+<div class="article-head">
+<span class="chip coral">Chapter 5 • Credit Cards</span>
+<h2>Credit Cards: The 21-Day Free Loan (and the Trap)</h2>
+<p class="dek">Numbers below are exact — simulated month by month at 24.99% APR with a $35 minimum payment.</p>
+<p class="meta">5-minute read • Try the calculator above as you read</p>
+</div>
+<div class="article-img"><img src="assets/credit.webp" alt="Illustration of a credit card set like a trap above a laptop"></div>
+<div class="prose">
+<div class="question"><strong>Your question:</strong> “Everyone says credit cards are dangerous — how do they actually work?”</div>
+<p>Here’s the secret: a credit card is a free 21-day loan. If you pay the full statement balance by the due date, the card company charges you zero interest. Zero. The “danger” part only starts when you carry a balance past the due date. That’s when the interest machine turns on — and it’s engineered to keep you paying for years.</p>
+<h3>How it actually works</h3>
+<p><strong>The billing cycle.</strong> Your card doesn’t track every day individually. It batches roughly 30 days of spending into one <em>statement balance</em>, then gives you about 21 days (the <em>grace period</em>) to pay it in full. Pay the whole statement balance by the due date: no interest, period.</p>
+<p><strong>APR in plain English.</strong> APR is the yearly interest rate, but interest compounds <em>monthly</em>. A 24.99% APR means the monthly rate is 24.99 ÷ 12 ≈ 2.08%. Every month you carry a balance, the card adds about 2.08% of what you owe — on top of what you already owed.</p>
+<p><strong>Minimum payments are engineered.</strong> The minimum — say $35 on a $1,200 balance — is set just high enough that you’re technically making progress, and just low enough that you stay in debt for years. It’s not generosity; it’s the most profitable number the card company could pick.</p>
+<p><strong>Utilization moves your score fast.</strong> Using more than 30% of your credit limit hurts your score. A $1,200 balance on a $2,000-limit card is 60% — even before the interest bill arrives.</p>
+<h3>The worked example: Maya’s $1,200 laptop</h3>
+<p>Maya puts a $1,200 laptop on her first card at 24.99% APR. Three ways this plays out:</p>
+<div class="paths">
+<div class="path"><h4>Path 1 — She pays the statement balance in full every month</h4><p>Total interest: <span class="big">$0.00.</span> The card was a free short-term loan, exactly as designed. This is the only path where the card company makes no money off her.</p></div>
+<div class="path"><h4>Path 2 — She pays just the $35 minimum</h4><p>The balance shrinks by a few dollars a month while interest piles on. The final bill:</p><p><span class="big">61 months</span> — a little over five years &nbsp;•&nbsp; Total paid: <span class="big">$2,125.71</span> &nbsp;•&nbsp; Interest alone: <span class="big">$925.71</span></p><p>She bought the laptop almost twice. The $1,200 purchase cost her $2,126.</p></div>
+<div class="path"><h4>Path 3 — She pays $85 a month (the minimum, plus $50 extra)</h4><p>That extra $50 doesn’t sound like much. It changes everything:</p><p><span class="big">17 months</span> — under a year and a half &nbsp;•&nbsp; Total paid: <span class="big">$1,435.81</span> &nbsp;•&nbsp; Interest: <span class="big">$235.81</span></p><p>Versus minimum-only: <strong>$689.90 saved in interest, 44 months of her life back.</strong> The extra $50 a month erased more than two-thirds of the interest.</p></div>
+</div>
+<p>The difference between Path 2 and Path 3 isn’t a budgeting app or a side hustle. It’s one decision, made once: <em>never pay just the minimum.</em></p>
+<h3>Try it with your own numbers</h3>
+<p>Scroll up to the <a href="#calculator">Minimum Payment Calculator</a> and plug in:</p>
+<ol class="tight">
+<li>A $1,200 balance at 24.99% APR, paying $35 a month — watch the payoff stretch past five years.</li>
+<li>Change the payment to $85 — watch it collapse to 17 months.</li>
+</ol>
+<p>Now run the number that matters: <strong>your</strong> actual balance, <strong>your</strong> actual APR (it’s printed on your statement), and whatever you’d pay above the minimum. That’s your real plan.</p>
+<div class="action"><h4>Your one action tonight</h4><p>If you carry a balance: open your card statement, find the APR and the minimum payment, and run them through the calculator. If the payoff is longer than a year, set up an automatic payment for the minimum <em>plus</em> a fixed extra amount — even $25 — and watch the timeline shrink.</p></div>
+<p><em>This post is one chapter of “First 90 Days: The Money Playbook for Teens Moving Out” — 12 chapters on the first three months of financial independence, every one with real numbers, plus interactive calculators to run your own.</em></p>
+</div>
+</article>
+
+<section class="end">
+<h2>Three posts down. Nine chapters to go.</h2>
+<p>These three are free samples from <em>First 90 Days: The Money Playbook for Teens Moving Out</em> — a 12-chapter guide to the first three months of living on your own money. If one of these saved you a surprise, send it to someone who’s about to move out, start a job, or get a first card. That’s who it was written for.</p>
+<p style="margin:0"><a href="#paycheck">Re-read the paycheck post →</a> &nbsp;•&nbsp; <a href="#calculator">Run the calculator again →</a></p>
+</section>
+</main>
+<footer class="wrap">First 90 Days — free posts for teens (and the parents sending them). Examples use California figures where noted; your state and situation will differ — the method is the same. Not financial advice, just the math, plainly.</footer>
+
+<script>
+(function(){
+  var bal=document.getElementById('bal'), apr=document.getElementById('apr'), pay=document.getElementById('pay');
+  var balOut=document.getElementById('balOut'), aprOut=document.getElementById('aprOut'), payOut=document.getElementById('payOut');
+  var monthsOut=document.getElementById('monthsOut'), yearsOut=document.getElementById('yearsOut'), intOut=document.getElementById('intOut'), totalOut=document.getElementById('totalOut'), firstIntOut=document.getElementById('firstIntOut'), warn=document.getElementById('warnBox'), chart=document.getElementById('chart');
+  function money(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function money0(n){return '$'+Math.round(n).toLocaleString('en-US');}
+  function simulate(B,A,P){
+    var r=A/100/12, b=B, totalInt=0, months=0, series=[B];
+    var firstInt=B*r;
+    if(P<=firstInt && B>0){ return {never:true, firstInt:firstInt, series:[B,B]}; }
+    while(b>0.005 && months<1200){
+      var interest=b*r; totalInt+=interest; b+=interest;
+      var applied=Math.min(P,b); b-=applied; months++; series.push(Math.max(0,b));
+      if(months>600) break;
+    }
+    return {never:false, months:months, totalInt:totalInt, total:B+totalInt, firstInt:firstInt, series:series};
+  }
+  function draw(series, never){
+    var W=520,H=180,padL=8,padR=8,padT=14,padB=22;
+    var maxV=Math.max.apply(null,series)*1.05 || 1;
+    var n=series.length;
+    function x(i){return padL + (W-padL-padR)*(n===1?0:i/(n-1));}
+    function y(v){return padT + (H-padT-padB)*(1 - v/maxV);}
+    var pts=series.map(function(v,i){return x(i).toFixed(1)+','+y(v).toFixed(1);}).join(' ');
+    var area=pts+' '+x(n-1).toFixed(1)+','+(H-padB)+' '+padL+','+(H-padB);
+    chart.innerHTML='<polygon points="'+area+'" fill="rgba(233,164,38,.25)"></polygon><polyline points="'+pts+'" fill="none" stroke="#e9a426" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline><text x="'+padL+'" y="'+(H-6)+'">Month 0</text><text x="'+(W-90)+'" y="'+(H-6)+'">'+(never?'never pays off':'Month '+ (n-1))+'</text><text x="'+padL+'" y="12">'+money0(maxV/1.05)+'</text>';
+  }
+  function render(){
+    var B=parseFloat(bal.value), A=parseFloat(apr.value), P=parseFloat(pay.value);
+    balOut.textContent=money0(B); aprOut.textContent=A.toFixed(2).replace(/\.00$/,'')+'%'; payOut.textContent=money0(P);
+    document.querySelectorAll('.preset').forEach(function(btn){ btn.classList.toggle('active', parseFloat(btn.getAttribute('data-preset'))===P); });
+    var res=simulate(B,A,P);
+    firstIntOut.textContent=money(res.firstInt);
+    if(res.never){
+      warn.classList.add('show'); monthsOut.textContent='Never'; yearsOut.textContent='balance grows at this payment'; intOut.textContent='—'; totalOut.textContent='—'; draw(res.series,true); return;
+    }
+    warn.classList.remove('show');
+    monthsOut.textContent=res.months+(res.months===1?' month':' months');
+    var yrs=Math.floor(res.months/12), mos=res.months%12;
+    yearsOut.textContent='about '+(yrs>0?yrs+(yrs===1?' year':' years')+(mos?', ':''):'')+(mos?mos+(mos===1?' month':' months'):'');
+    if(res.months<12) yearsOut.textContent='under a year';
+    intOut.textContent=money(res.totalInt); totalOut.textContent=money(res.total);
+    draw(res.series,false);
+  }
+  [bal,apr,pay].forEach(function(el){ el.addEventListener('input', render); });
+  document.querySelectorAll('.preset').forEach(function(btn){ btn.addEventListener('click', function(){ pay.value=btn.getAttribute('data-preset'); render(); }); });
+  render();
+})();
+</script>
+</body>
+</html>
