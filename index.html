@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <title>Luna Lee — Software, actuarial math, and money</title>
 <meta name="description" content="Luna Lee is a backend software engineer and actuarial mathematician. Notes and tools about money, interest theory, and formal mathematics.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -17,8 +17,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=Six+Caps&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<style>
+/* Hallmark · shape: shared page shell · genre: editorial · theme: Broadside (deal 2/3, seed 4419c0ec) · redesign: full · copy: verbatim · posture: committed · v2.0.0 */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 · weakest: E, the common focus and overflow floors are explicit per route */
+html, body { overflow-x: clip; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+button:active { background-color: var(--color-paper-3); }
+button:disabled { opacity: .55; cursor: not-allowed; }
+</style>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
@@ -30,15 +38,15 @@
 <main class="wrap home">
 <section class="intro" aria-labelledby="intro-title">
 <div class="intro-copy">
-<p class="eyebrow">A personal site by Luna Lee</p>
-<h1 id="intro-title">I like making the numbers <em>make sense.</em></h1>
+<h1 id="intro-title" class="sentence-case">I like making the numbers make sense.</h1>
+<p class="hero-note">A personal site by Luna Lee</p>
 <p class="lede">I’m a backend software engineer, formerly at Amazon Health and One Medical, with degrees in financial actuarial mathematics and statistics from UCLA. Here I share practical money explainers, small calculators, and the math behind them.</p>
-<p class="intro-links"><a href="https://www.linkedin.com/in/juan-luna-piao">LinkedIn</a><span>·</span><a href="https://github.com/JPL13">GitHub</a><span>·</span><a href="https://quantkit.gumroad.com/l/dvggny">QuantKit</a></p>
+<p class="intro-links"><a href="https://www.linkedin.com/in/juan-luna-piao">LinkedIn</a><span class="copy-separator" aria-hidden="true"></span><a href="https://github.com/JPL13">GitHub</a><span class="copy-separator" aria-hidden="true"></span><a href="https://quantkit.gumroad.com/l/dvggny">QuantKit</a></p>
 </div>
 </section>
 
 <section class="worked-example" aria-labelledby="example-title">
-<div class="example-label"><span class="eyebrow">A worked example</span><span class="example-index">01 / MONEY IN PRACTICE</span></div>
+<div class="example-label"><span class="example-label-text">A worked example</span><span class="example-index">01 / MONEY IN PRACTICE</span></div>
 <div class="example-content">
 <div><h2 id="example-title">The minimum payment is a number with a long tail.</h2>
 <p>On a $1,200 credit-card balance at 24.99% APR, paying $35 a month takes 61 months. The interest adds up to $925.71.</p>
@@ -54,21 +62,18 @@
 </section>
 
 <section class="work-section" aria-labelledby="work-title">
-<div class="work-heading"><div><p class="eyebrow">Things I’ve made</p><h2 id="work-title">Writing, tools, and proofs</h2></div><p>Different questions, same habit: show the steps.</p></div>
+<div class="work-heading"><div><h2 id="work-title">Writing, tools, and proofs</h2></div><p>Different questions, same habit: show the steps.</p></div>
 <div class="work-list">
 <article class="work-item writing-item">
-<div class="work-meta"><span>01</span><span>Writing</span></div>
-<div class="work-main"><h3><a href="/first90days/">First 90 Days</a></h3><p>A practical guide for teens preparing to live independently: first paycheck, first apartment, and the credit-card minimum-payment trap. Each post works through the numbers and links to a free calculator.</p></div>
+<div class="work-main"><h3><a href="/first90days/">First 90 Days</a></h3><div class="work-meta"><span>01</span><span>Writing</span></div><p>A practical guide for teens preparing to live independently: first paycheck, first apartment, and the credit-card minimum-payment trap. Each post works through the numbers and links to a free calculator.</p></div>
 <a class="work-arrow" href="/first90days/" aria-label="Read First 90 Days">↗</a>
 </article>
 <article class="work-item tools-item">
-<div class="work-meta"><span>02</span><span>Tools</span></div>
-<div class="work-main"><h3><a href="/calculators/">FM Toolkit</a></h3><p>Interest theory and loan amortization calculators for Exam FM. The results are checked against known answers; the interest theory calculator is free.</p></div>
+<div class="work-main"><h3><a href="/calculators/">FM Toolkit</a></h3><div class="work-meta"><span>02</span><span>Tools</span></div><p>Interest theory and loan amortization calculators for Exam FM. The results are checked against known answers; the interest theory calculator is free.</p></div>
 <a class="work-arrow" href="/calculators/" aria-label="Explore the FM Toolkit calculators">↗</a>
 </article>
 <article class="work-item code-item">
-<div class="work-meta"><span>03</span><span>Formal math</span></div>
-<div class="work-main"><h3><a href="https://github.com/JPL13/fm-formalization"><code>fm-formalization</code></a></h3><p>Interest theory in Lean 4 and Mathlib: accumulation and discount factors, geometric series, and proofs behind the annuity formulas.</p></div>
+<div class="work-main"><h3><a href="https://github.com/JPL13/fm-formalization"><code>fm-formalization</code></a></h3><div class="work-meta"><span>03</span><span>Formal math</span></div><p>Interest theory in Lean 4 and Mathlib: accumulation and discount factors, geometric series, and proofs behind the annuity formulas.</p></div>
 <a class="work-arrow" href="https://github.com/JPL13/fm-formalization" aria-label="View fm-formalization on GitHub">↗</a>
 </article>
 </div>

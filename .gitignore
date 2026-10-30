@@ -7,3 +7,6 @@
 # Windows Explorer metadata
 Thumbs.db
 Desktop.ini
+
+# Hallmark local audit artifacts
+.hallmark/

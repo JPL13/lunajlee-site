@@ -3,128 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <title>First 90 Days — Teen Money Guide</title>
+<meta name="description" content="A practical teen money guide to your first paycheck, apartment, and credit card, with real numbers and a free calculator.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#f7f2e9; --surface:#fffdf8; --surface2:#eee8dd;
-  --ink:#282722; --muted:#6b675f; --line:#ddd4c7;
-  --teal:#98513d; --teal2:#82402f; --coral:#a44d37; --coral-soft:#f1e1d9;
-  --amber:#9d7147; --amber-soft:#f2e7d9; --teal-soft:#f2e6de;
-  --radius:6px;
-  --shadow:0 8px 24px rgba(40,39,34,.08);
-}
-@media (prefers-color-scheme: dark){
-  :root{ --bg:#201e1a; --surface:#292722; --surface2:#322e27; --ink:#f0ebe1; --muted:#c0b8aa; --line:#494238; --teal:#e1a18a; --teal2:#efb49b; --coral:#de9477; --coral-soft:#422c26; --amber:#d5a979; --amber-soft:#3d3026; --teal-soft:#3a2a24; --shadow:0 8px 24px rgba(0,0,0,.3);}
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif;line-height:1.6}
-a{color:var(--teal2)} img{max-width:100%;display:block}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.reading{max-width:760px;margin:0 auto}
-/* top bar */
-.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
-.brand{font-weight:900;letter-spacing:-.02em;font-size:15px}
-.brand span{color:var(--coral)}
-.topnav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.topnav a{font-size:13px;font-weight:700;text-decoration:none;color:var(--ink);padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
-.topnav a:hover{border-color:var(--teal)}
-/* hero */
-.hero{padding:36px 0 10px}
-.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
-.hero h1{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:clamp(42px,7vw,72px);line-height:.95;letter-spacing:-.02em;margin:10px 0 14px;font-weight:600}
-.hero h1 em{font-style:italic;color:var(--teal)}
-.lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:680px;margin:0}
-.hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
-.stat{flex:1 1 160px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.stat b{display:block;font-size:22px;line-height:1}
-.stat span{font-size:13px;color:var(--muted)}
-.hero-img{border-radius:4px;overflow:hidden;border:1px solid var(--line);box-shadow:none;background:var(--surface)}
-.hero-img img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:center 48%}
-.caption{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-style:italic;font-size:14px;color:var(--muted);margin-top:9px}
-/* TOC */
-.toc{padding:28px 0 8px}
-.toc h2,.section-head h2{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:30px;margin:0 0 6px;letter-spacing:-.01em}
-.toc p{color:var(--muted);margin:0 0 16px}
-.toc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.toc-card{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;transition:border-color .18s ease,transform .18s ease}
-.toc-card:hover{border-color:var(--teal);transform:translateY(-2px)}
-.toc-card img{aspect-ratio:3/2;object-fit:cover;width:100%}
-.toc-body{padding:16px}
-.chip{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:var(--teal-soft);color:var(--teal)}
-.chip.coral{background:var(--coral-soft);color:var(--coral)} .chip.amber{background:var(--amber-soft);color:#8a5f00}
-@media(prefers-color-scheme:dark){.chip.amber{color:var(--amber)}}
-.toc-body h3{margin:10px 0 6px;font-size:17px;line-height:1.25;letter-spacing:-.01em}
-.toc-body p{font-size:14px;color:var(--muted);margin:0}
-.toc-num{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:28px;font-weight:600;margin-top:12px}
-.toc-num small{font-size:13px;font-family:"Atkinson Hyperlegible",sans-serif;color:var(--muted);font-weight:400}
-/* calculator */
-.calc-section{margin:36px 0}
-.calc-shell{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--coral);border-radius:6px;padding:clamp(20px,4vw,36px);box-shadow:none}
-.calc-shell h2{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:clamp(28px,4vw,38px);margin:0 0 6px;line-height:1.05}
-.calc-shell .sub{color:var(--muted);margin:0 0 20px;max-width:640px}
-.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}
-.field{margin-bottom:18px}
-.field label{display:flex;justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:8px}
-.field label output{font-variant-numeric:tabular-nums;background:var(--surface2);padding:2px 10px;border-radius:4px}
-input[type=range]{width:100%;accent-color:var(--coral);height:28px}
-.presets{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
-.presets button{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px;border-radius:4px;font-weight:700;cursor:pointer;font-family:inherit;font-size:13px}
-.presets button.active{background:var(--coral);color:#fff;border-color:var(--coral)}
-.results{background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:18px}
-.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.result b{display:block;font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
-.result span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.warn{display:none;margin-top:14px;background:var(--coral-soft);border:1px solid var(--coral);color:var(--ink);padding:12px 14px;border-radius:6px;font-size:14px}
-.warn.show{display:block}
-.chart-wrap{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:12px}
-.chart-wrap p{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-svg text{fill:var(--muted);font-size:11px}
-/* articles */
-article{padding:44px 0 10px;border-top:1px solid var(--line);margin-top:36px}
-article:first-of-type{border-top:none}
-.article-head{max-width:760px;margin:0 auto}
-.article-head h2{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:clamp(32px,5vw,46px);line-height:1.02;letter-spacing:-.02em;margin:12px 0 10px;font-weight:600}
-.dek{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-style:italic;font-size:18px;color:var(--muted);margin:0 0 8px}
-.meta{font-size:13px;color:var(--muted);margin-bottom:18px}
-.article-img{max-width:900px;margin:0 auto 8px;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
-.article-img img{aspect-ratio:3/2;object-fit:cover;width:100%;object-position:center 48%}
-.prose{max-width:760px;margin:0 auto;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:19px;line-height:1.75}
-.prose p{margin:0 0 18px}
-.prose h3{font-family:"Atkinson Hyperlegible",sans-serif;font-size:20px;letter-spacing:-.01em;margin:30px 0 10px;line-height:1.3}
-.prose strong{font-weight:600}
-.question{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);padding:16px 18px;border-radius:0 14px 14px 0;margin:22px 0;font-size:18px}
-.callout{background:var(--teal-soft);border-radius:14px;padding:18px;margin:22px 0}
-.callout.coral{background:var(--coral-soft)} .callout.amber{background:var(--amber-soft)}
-.callout h4{margin:0 0 8px;font-family:"Atkinson Hyperlegible",sans-serif;font-size:15px}
-.callout p,.callout li{font-size:17px}
-.action{background:var(--ink);color:var(--bg);border-radius:16px;padding:20px;margin:28px 0}
-.action h4{margin:0 0 8px;font-family:"Atkinson Hyperlegible",sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-.action p{margin:0;font-size:17px}
-.table-wrap{overflow:hidden;border:1px solid var(--line);border-radius:14px;margin:20px 0;background:var(--surface2)}
-table{width:100%;border-collapse:collapse;font-family:"Atkinson Hyperlegible",sans-serif;font-size:15px}
-th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-tr.total td{font-weight:800;background:var(--teal-soft);border-bottom:none}
-ul.tight li,ol.tight li{margin-bottom:8px}
-.paths{display:grid;gap:12px;margin:20px 0}
-.path{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface)}
-.path h4{margin:0 0 6px;font-family:"Atkinson Hyperlegible",sans-serif;font-size:15px}
-.path p{font-size:17px;margin:0 0 6px}
-.path .big{font-family:"Atkinson Hyperlegible",sans-serif;font-weight:800;font-size:15px}
-/* footer */
-.end{margin:44px 0 50px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px}
-.end h2{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;margin:0 0 8px;font-size:28px}
-.end p{color:var(--muted);margin:0 0 12px;max-width:680px}
-footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
-@media(max-width:860px){.toc-grid{grid-template-columns:1fr}.calc-grid{grid-template-columns:1fr}.topnav a{padding:6px 8px;font-size:12px}.prose{font-size:18px} th,td{padding:10px}.topbar-inner{flex-direction:column;align-items:flex-start;gap:8px}.topnav{justify-content:flex-start}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=Six+Caps&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="lunajlee.com">
@@ -134,17 +18,14 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <meta property="og:image" content="https://lunajlee.com/first90days/assets/hero.webp?v=2">
 <meta property="og:image:alt" content="A young adult moving into an apartment">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css">
 <style>
-/* lunajlee.com global bar (injected) */
-.lj-bar{background:#2c2a26;color:#f7f2e9;font-size:13px;line-height:1.4}
-.lj-bar-inner{max-width:1120px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.lj-bar a{color:#f7f3ec;text-decoration:none;font-weight:700}
-.lj-bar a:hover{text-decoration:underline}
-.lj-bar .lj-brand{font-weight:900;letter-spacing:.02em}
-.lj-bar .lj-brand i{color:#d19172;font-style:normal}
-.lj-bar nav{display:flex;gap:16px}
-.lj-foot{max-width:1120px;margin:0 auto;padding:22px 20px 34px;font-size:13px;color:#5b6573;border-top:1px solid rgba(128,128,128,.25)}
-.lj-foot a{font-weight:700}
+/* Hallmark · shape: shared page shell · genre: editorial · theme: Broadside (deal 2/3, seed 4419c0ec) · redesign: full · copy: verbatim · posture: committed · v2.0.0 */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 · weakest: E, the common focus and overflow floors are explicit per route */
+html, body { overflow-x: clip; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+button:active { background-color: var(--color-paper-3); }
+button:disabled { opacity: .55; cursor: not-allowed; }
 </style>
 </head>
 <body>
@@ -158,9 +39,9 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 
 <main class="wrap">
 <section class="hero">
-<div class="eyebrow">Free to read • 3 posts + 1 calculator</div>
-<h1>Your first 90 days<br>on your <em>own money.</em></h1>
+<h1 class="sentence-case">Your first 90 days<br>on your own money.</h1>
 <p class="lede">The first paycheck, the first apartment, and the first credit card — explained with real numbers, not lectures. Start anywhere. Each post ends with one thing to do tonight.</p>
+<p class="hero-note">Free to read • 3 posts + 1 calculator</p>
 <div class="hero-stats">
 <div class="stat"><b>≈ $2,724</b><span>actual take-home on $19/hr in California — Ch. 1</span></div>
 <div class="stat"><b>≈ $2,670</b><span>real cost to move into a “$1,050” apartment — Ch. 4</span></div>
@@ -174,9 +55,9 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <h2>Pick your moment</h2>
 <p>Read in order, or jump to the one that’s about to happen to you.</p>
 <div class="toc-grid">
-<a class="toc-card" href="#paycheck"><img src="assets/paycheck.webp?v=2" alt="Hands review a paper pay stub beside a phone calculator on a wooden table"><div class="toc-body"><span class="chip">Chapter 1</span><h3>Your First Paycheck: Where the Money Goes Before You See It</h3><p>Why $19/hr isn’t $3,040 a month — and the five deductions in between.</p><div class="toc-num">$3,293 → $2,724 <small>gross to take-home</small></div></div></a>
-<a class="toc-card" href="#apartment"><img src="assets/apartment.webp?v=2" alt="A sunlit, modest first apartment with moving boxes still unpacked"><div class="toc-body"><span class="chip amber">Chapter 4</span><h3>Your First Apartment: Why $1,050 Rent Really Costs $2,700</h3><p>Deposit, fees, and the forgotten-stuff run nobody warns you about.</p><div class="toc-num">$446 / month <small>for 6 months gets you there</small></div></div></a>
-<a class="toc-card" href="#credit"><img src="assets/credit.webp?v=2" alt="A person reviews a bill beside a calculator, laptop, and generic card"><div class="toc-body"><span class="chip coral">Chapter 5</span><h3>Credit Cards: The 21-Day Free Loan (and the Trap)</h3><p>Pay in full and it’s free. Pay the minimum and a laptop costs double.</p><div class="toc-num">61 months <small>to pay off $1,200 at $35/mo</small></div></div></a>
+<a class="toc-card" href="#paycheck"><img src="assets/paycheck.webp?v=2" alt="Hands review a paper pay stub beside a phone calculator on a wooden table"><div class="toc-body"><h3>Your First Paycheck: Where the Money Goes Before You See It</h3><span class="chip">Chapter 1</span><p>Why $19/hr isn’t $3,040 a month — and the five deductions in between.</p><div class="toc-num">$3,293 → $2,724 <small>gross to take-home</small></div></div></a>
+<a class="toc-card" href="#apartment"><img src="assets/apartment.webp?v=2" alt="A sunlit, modest first apartment with moving boxes still unpacked"><div class="toc-body"><h3>Your First Apartment: Why $1,050 Rent Really Costs $2,700</h3><span class="chip amber">Chapter 4</span><p>Deposit, fees, and the forgotten-stuff run nobody warns you about.</p><div class="toc-num">$446 / month <small>for 6 months gets you there</small></div></div></a>
+<a class="toc-card" href="#credit"><img src="assets/credit.webp?v=2" alt="A person reviews a bill beside a calculator, laptop, and generic card"><div class="toc-body"><h3>Credit Cards: The 21-Day Free Loan (and the Trap)</h3><span class="chip coral">Chapter 5</span><p>Pay in full and it’s free. Pay the minimum and a laptop costs double.</p><div class="toc-num">61 months <small>to pay off $1,200 at $35/mo</small></div></div></a>
 </div>
 </section>
 
@@ -195,7 +76,7 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <button type="button" data-preset="85" class="preset">+$50 extra — $85</button>
 <button type="button" data-preset="150" class="preset">$150 / month</button>
 </div>
-<p style="font-size:13px;color:var(--muted);margin:10px 0 0">Assumes no new charges and a fixed payment every month. Interest is charged monthly at APR ÷ 12.</p>
+<p class="calc-note">Assumes no new charges and a fixed payment every month. Interest is charged monthly at APR ÷ 12.</p>
 </div>
 <div>
 <div class="results">
@@ -205,7 +86,7 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <div class="result"><span>Total paid</span><b id="totalOut">$2,125.71</b><small>balance + interest</small></div>
 <div class="result"><span>First month’s interest</span><b id="firstIntOut">$24.99</b><small>before any principal moves</small></div>
 </div>
-<div class="warn" id="warnBox">⚠️ This payment doesn’t cover the first month’s interest, so the balance would grow instead of shrinking. Raise the payment above the first month’s interest to start making progress.</div>
+<div class="warn" id="warnBox"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M12 3 1.8 21h20.4L12 3Zm0 6v5m0 3v.1" fill="none" stroke="currentColor" stroke-width="2"/></svg> This payment doesn’t cover the first month’s interest, so the balance would grow instead of shrinking. Raise the payment above the first month’s interest to start making progress.</div>
 <div class="chart-wrap"><p>Balance over time</p><svg id="chart" viewBox="0 0 520 180" width="100%" height="180" role="img" aria-label="Chart showing balance declining to zero over time"></svg></div>
 </div>
 </div>
@@ -215,8 +96,8 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <!-- ============ CHAPTER 1 ============ -->
 <article id="paycheck">
 <div class="article-head">
-<span class="chip">Chapter 1 • First Paycheck</span>
 <h2>Your First Paycheck: Where the Money Goes Before You See It</h2>
+<span class="chip">Chapter 1 • First Paycheck</span>
 <p class="dek">Numbers below are a real worked example: $19/hr, 40 hours a week, California, single filer, standard deduction, no 401(k) or health premiums. Your exact numbers will differ a bit — the shape won’t.</p>
 <p class="meta">6-minute read • Start here if you just got hired</p>
 </div>
@@ -264,8 +145,8 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <!-- ============ CHAPTER 4 ============ -->
 <article id="apartment">
 <div class="article-head">
-<span class="chip amber">Chapter 4 • First Apartment</span>
 <h2>Your First Apartment: Why $1,050 Rent Really Costs $2,700</h2>
+<span class="chip amber">Chapter 4 • First Apartment</span>
 <p class="dek">The worked example below uses a $1,050/month rent share in California — scale the line items to your city; the shape is the same everywhere.</p>
 <p class="meta">6-minute read • Read before you tour a single place</p>
 </div>
@@ -314,8 +195,8 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <!-- ============ CHAPTER 5 ============ -->
 <article id="credit">
 <div class="article-head">
-<span class="chip coral">Chapter 5 • Credit Cards</span>
 <h2>Credit Cards: The 21-Day Free Loan (and the Trap)</h2>
+<span class="chip coral">Chapter 5 • Credit Cards</span>
 <p class="dek">Numbers below are exact — simulated month by month at 24.99% APR with a $35 minimum payment.</p>
 <p class="meta">5-minute read • Try the calculator above as you read</p>
 </div>
@@ -332,8 +213,8 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <p>Maya puts a $1,200 laptop on her first card at 24.99% APR. Three ways this plays out:</p>
 <div class="paths">
 <div class="path"><h4>Path 1 — She pays the statement balance in full every month</h4><p>Total interest: <span class="big">$0.00.</span> The card was a free short-term loan, exactly as designed. This is the only path where the card company makes no money off her.</p></div>
-<div class="path"><h4>Path 2 — She pays just the $35 minimum</h4><p>The balance shrinks by a few dollars a month while interest piles on. The final bill:</p><p><span class="big">61 months</span> — a little over five years &nbsp;•&nbsp; Total paid: <span class="big">$2,125.71</span> &nbsp;•&nbsp; Interest alone: <span class="big">$925.71</span></p><p>She bought the laptop almost twice. The $1,200 purchase cost her $2,126.</p></div>
-<div class="path"><h4>Path 3 — She pays $85 a month (the minimum, plus $50 extra)</h4><p>That extra $50 doesn’t sound like much. It changes everything:</p><p><span class="big">17 months</span> — under a year and a half &nbsp;•&nbsp; Total paid: <span class="big">$1,435.81</span> &nbsp;•&nbsp; Interest: <span class="big">$235.81</span></p><p>Versus minimum-only: <strong>$689.90 saved in interest, 44 months of her life back.</strong> The extra $50 a month erased more than two-thirds of the interest.</p></div>
+<div class="path"><h4>Path 2 — She pays just the $35 minimum</h4><p>The balance shrinks by a few dollars a month while interest piles on. The final bill:</p><p><span class="big">61 months</span> — a little over five years <span class="copy-separator" aria-hidden="true"></span> Total paid: <span class="big">$2,125.71</span> <span class="copy-separator" aria-hidden="true"></span> Interest alone: <span class="big">$925.71</span></p><p>She bought the laptop almost twice. The $1,200 purchase cost her $2,126.</p></div>
+<div class="path"><h4>Path 3 — She pays $85 a month (the minimum, plus $50 extra)</h4><p>That extra $50 doesn’t sound like much. It changes everything:</p><p><span class="big">17 months</span> — under a year and a half <span class="copy-separator" aria-hidden="true"></span> Total paid: <span class="big">$1,435.81</span> <span class="copy-separator" aria-hidden="true"></span> Interest: <span class="big">$235.81</span></p><p>Versus minimum-only: <strong>$689.90 saved in interest, 44 months of her life back.</strong> The extra $50 a month erased more than two-thirds of the interest.</p></div>
 </div>
 <p>The difference between Path 2 and Path 3 isn’t a budgeting app or a side hustle. It’s one decision, made once: <em>never pay just the minimum.</em></p>
 <h3>Try it with your own numbers</h3>
@@ -351,7 +232,7 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
 <section class="end">
 <h2>Three posts down. Nine chapters to go.</h2>
 <p>These three are free samples from <em>First 90 Days: The Money Playbook for Teens Moving Out</em> — a 12-chapter guide to the first three months of living on your own money. If one of these saved you a surprise, send it to someone who’s about to move out, start a job, or get a first card. That’s who it was written for.</p>
-<p style="margin:0"><a href="#paycheck">Re-read the paycheck post →</a> &nbsp;•&nbsp; <a href="#calculator">Run the calculator again →</a></p>
+<p style="margin:0"><a href="#paycheck">Re-read the paycheck post</a> &nbsp;•&nbsp; <a href="#calculator">Run the calculator again</a></p>
 </section>
 </main>
 <footer class="wrap">First 90 Days — free posts for teens (and the parents sending them). Examples use California figures where noted; your state and situation will differ — the method is the same. Not financial advice, just the math, plainly.</footer>
@@ -382,7 +263,7 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13px;text-align:center}
     function y(v){return padT + (H-padT-padB)*(1 - v/maxV);}
     var pts=series.map(function(v,i){return x(i).toFixed(1)+','+y(v).toFixed(1);}).join(' ');
     var area=pts+' '+x(n-1).toFixed(1)+','+(H-padB)+' '+padL+','+(H-padB);
-    chart.innerHTML='<polygon points="'+area+'" fill="rgba(152,81,61,.16)"></polygon><polyline points="'+pts+'" fill="none" stroke="#98513d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline><text x="'+padL+'" y="'+(H-6)+'">Month 0</text><text x="'+(W-90)+'" y="'+(H-6)+'">'+(never?'never pays off':'Month '+ (n-1))+'</text><text x="'+padL+'" y="12">'+money0(maxV/1.05)+'</text>';
+    chart.innerHTML='<polygon points="'+area+'" fill="color-mix(in oklab, var(--color-accent) 16%, transparent)"></polygon><polyline points="'+pts+'" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline><text x="'+padL+'" y="'+(H-6)+'">Month 0</text><text x="'+(W-90)+'" y="'+(H-6)+'">'+(never?'never pays off':'Month '+ (n-1))+'</text><text x="'+padL+'" y="12">'+money0(maxV/1.05)+'</text>';
   }
   function render(){
     var B=parseFloat(bal.value), A=parseFloat(apr.value), P=parseFloat(pay.value);

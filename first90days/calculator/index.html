@@ -3,229 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <title>Minimum Payment Calculator</title>
+    <meta name="description" content="Explore the true cost of minimum credit card payments with adjustable balance, APR, and monthly payment inputs.">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
-    <style>
-      :root{
-        --bg:#f7f2e9;
-        --surface:#fffdf8;
-        --surface-2:#eee8dd;
-        --ink:#282722;
-        --ink-2:#5d5a54;
-        --ink-3:#79736a;
-        --line:#ddd4c7;
-        --line-strong:#c5b9a8;
-        --trap:#98513d;
-        --trap-bg:#f2e3dc;
-        --trap-ink:#7b3d2d;
-        --good:#5d5b55;
-        --good-bg:#e9e6df;
-        --good-ink:#494640;
-        --amber:#916b44;
-        --amber-bg:#f3e9dc;
-        --chart-line:#98513d;
-        --chart-fill:rgba(152,81,61,.12);
-        --chart-good:#5d5b55;
-        --focus:#98513d;
-        --shadow:0 1px 2px rgba(40,39,34,.05), 0 10px 30px rgba(40,39,34,.07);
-      }
-      @media (prefers-color-scheme: dark){
-        :root{
-          --bg:#201e1a;
-          --surface:#292722;
-          --surface-2:#322e27;
-          --ink:#f0ebe1;
-          --ink-2:#c0b8aa;
-          --ink-3:#a49b8e;
-          --line:#494238;
-          --line-strong:#62584a;
-          --trap:#e1a18a;
-          --trap-bg:#442d26;
-          --trap-ink:#f0c0ad;
-          --good:#b9b2a7;
-          --good-bg:#36332e;
-          --good-ink:#ded7cc;
-          --amber:#d5a979;
-          --amber-bg:#3d3026;
-          --chart-line:#e1a18a;
-          --chart-fill:rgba(225,161,138,.14);
-          --chart-good:#b9b2a7;
-          --focus:#e1a18a;
-          --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.25);
-        }
-      }
-      *{box-sizing:border-box}
-      html{-webkit-text-size-adjust:100%}
-      body{
-        margin:0; background:var(--bg); color:var(--ink);
-        font-family:"Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
-        font-size:16px; line-height:1.55;
-      }
-      .wrap{max-width:1120px; margin:0 auto; padding:28px 20px 56px}
-      a{color:var(--trap)}
-      :focus-visible{outline:3px solid var(--focus); outline-offset:2px; border-radius:4px}
-
-      /* ---------- Header ---------- */
-      .kicker{
-        display:inline-flex; align-items:center; gap:8px;
-        font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-        color:var(--trap-ink); background:var(--trap-bg);
-        border:1px solid var(--trap); border-radius:999px; padding:5px 12px;
-      }
-      .kicker::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--trap)}
-      h1{
-        font-family:"Atkinson Hyperlegible", sans-serif;
-        font-size:clamp(2rem, 5.5vw, 3.4rem); line-height:1.02; letter-spacing:-.01em;
-        font-weight:800; margin:16px 0 12px; max-width:16ch;
-      }
-      h1 .hl{color:var(--trap)}
-      .lede{font-size:1.08rem; color:var(--ink-2); max-width:62ch; margin:0}
-      .lede strong{color:var(--ink)}
-      .story-strip{
-        margin-top:20px; display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;
-      }
-      .story-chip{
-        background:var(--surface); border:1px solid var(--line); border-radius:10px;
-        padding:10px 14px; box-shadow:var(--shadow);
-      }
-      .story-chip .n{font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:1.15rem; display:block; line-height:1.2}
-      .story-chip .l{font-size:.78rem; color:var(--ink-3); font-weight:600; letter-spacing:.04em; text-transform:uppercase}
-      .story-chip.danger .n{color:var(--trap)}
-      .btn-reset{
-        margin-left:auto; align-self:center;
-        font:inherit; font-weight:700; font-size:.9rem; cursor:pointer;
-        background:var(--trap); color:#fff; border:1px solid var(--trap);
-        border-radius:10px; padding:11px 16px;
-      }
-      .btn-reset:hover{opacity:.88}
-
-      /* ---------- Layout ---------- */
-      .grid{display:grid; grid-template-columns:380px 1fr; gap:20px; margin-top:24px; align-items:start}
-      @media (max-width:900px){ .grid{grid-template-columns:1fr} }
-
-      .card{
-        background:var(--surface); border:1px solid var(--line); border-radius:14px;
-        box-shadow:var(--shadow); padding:22px;
-      }
-      .card h2{
-        font-family:"Atkinson Hyperlegible",sans-serif;
-        font-size:1.25rem; font-weight:700; margin:0 0 4px; letter-spacing:-.01em;
-      }
-      .card .sub{color:var(--ink-2); font-size:.92rem; margin:0 0 18px}
-
-      /* ---------- Controls ---------- */
-      .field{margin-bottom:22px}
-      .field:last-child{margin-bottom:6px}
-      .field-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:8px}
-      .field label{font-weight:700; font-size:.95rem}
-      .field .hint{font-size:.82rem; color:var(--ink-3); margin-top:6px}
-      .money-input{display:flex; align-items:center; gap:2px; border:1px solid var(--line-strong); border-radius:8px; padding:4px 10px; background:var(--surface)}
-      .money-input span{font-family:"IBM Plex Mono",monospace; color:var(--ink-3); font-size:.95rem}
-      .money-input input{
-        width:92px; border:0; background:transparent; color:var(--ink);
-        font-family:"IBM Plex Mono",monospace; font-size:1.05rem; font-weight:600;
-        text-align:right; padding:2px 0;
-      }
-      .money-input input:focus{outline:none}
-      .money-input:focus-within{outline:3px solid var(--focus); outline-offset:1px}
-      input[type="range"]{
-        width:100%; accent-color:var(--trap); height:28px; cursor:pointer; margin:0;
-      }
-      .scale{display:flex; justify-content:space-between; font-size:.75rem; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; margin-top:2px}
-      .first-month{
-        border-top:1px dashed var(--line-strong); margin-top:4px; padding-top:16px;
-        font-size:.92rem; color:var(--ink-2);
-      }
-      .first-month strong{color:var(--ink)}
-      .split-bar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin-top:10px; border:1px solid var(--line)}
-      .split-bar .to-interest{background:var(--trap)}
-      .split-bar .to-balance{background:var(--good)}
-      .split-legend{display:flex; gap:16px; font-size:.8rem; margin-top:7px; color:var(--ink-2); flex-wrap:wrap}
-      .split-legend i{display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:5px}
-      .dot-trap{background:var(--trap)} .dot-good{background:var(--good)}
-
-      /* ---------- Results ---------- */
-      .results{display:flex; flex-direction:column; gap:20px; min-width:0}
-      .stat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-      @media (max-width:640px){ .stat-grid{grid-template-columns:1fr} }
-      .stat{
-        border:1px solid var(--line); border-radius:12px; padding:16px 18px; background:var(--surface-2);
-      }
-      .stat .l{font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3)}
-      .stat .v{font-family:"Atkinson Hyperlegible",sans-serif; font-size:2rem; font-weight:800; line-height:1.15; margin-top:2px}
-      .stat .d{font-size:.86rem; color:var(--ink-2); margin-top:2px}
-      .stat.danger .v{color:var(--trap)}
-      .stat.good .v{color:var(--good)}
-      .total-line{
-        display:flex; flex-wrap:wrap; gap:8px 22px; align-items:baseline;
-        border-top:1px dashed var(--line-strong); padding-top:14px; font-size:.98rem;
-      }
-      .total-line .big{font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:1.25rem}
-      .cost-bar{display:flex; height:16px; border-radius:8px; overflow:hidden; border:1px solid var(--line); margin-top:12px}
-      .cost-bar .principal{background:var(--good)}
-      .cost-bar .interest{background:var(--trap)}
-      .cost-legend{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:.83rem; color:var(--ink-2); margin-top:7px}
-
-      .warn{
-        display:none; border:1px solid var(--amber); background:var(--amber-bg);
-        border-radius:12px; padding:16px 18px; font-size:.95rem;
-      }
-      .warn.show{display:block}
-      .warn strong{display:block; margin-bottom:4px}
-
-      /* chart */
-      .chart-wrap{width:100%}
-      svg.chart{width:100%; height:auto; display:block}
-      .chart-note{font-size:.85rem; color:var(--ink-3); margin:10px 0 0}
-
-      /* comparison */
-      table{width:100%; border-collapse:collapse; font-size:.95rem}
-      th,td{padding:11px 10px; text-align:right; vertical-align:top}
-      th:first-child, td:first-child{text-align:left}
-      thead th{font-size:.76rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3); border-bottom:2px solid var(--line-strong)}
-      tbody td{border-bottom:1px solid var(--line)}
-      tbody tr:last-child td{border-bottom:0}
-      td .pay{font-family:"IBM Plex Mono",monospace; font-weight:600}
-      td .save{color:var(--good); font-weight:700}
-      tr.current-row td{background:var(--trap-bg)}
-      tr.current-row td:first-child{font-weight:700}
-      .tag{
-        display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
-        border-radius:999px; padding:2px 8px; margin-left:8px; vertical-align:middle;
-      }
-      .tag-you{background:var(--trap); color:#fff}
-      @media (prefers-color-scheme: dark){ .tag-you{color:#1b0f0a} }
-      @media (max-width:640px){
-        table, thead, tbody, tr, td{display:block; width:100%}
-        thead{display:none}
-        tbody tr{border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:12px}
-        tbody td{border-bottom:0; padding:4px 0; text-align:left; display:flex; justify-content:space-between; gap:14px}
-        tbody td::before{content:attr(data-l); font-size:.76rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3); padding-top:2px}
-        tbody td:first-child{display:block}
-        tbody td:first-child::before{content:""}
-        tr.current-row td{background:transparent}
-        tr.current-row{border-color:var(--trap); background:var(--trap-bg)}
-      }
-
-      /* schedule */
-      .sched{font-family:"IBM Plex Mono",monospace; font-size:.88rem}
-      .sched td, .sched th{font-family:"IBM Plex Mono",monospace}
-      .sched .ellipsis td{text-align:center; color:var(--ink-3); letter-spacing:.3em; padding:4px}
-
-      .how{
-        margin-top:20px; font-size:.92rem; color:var(--ink-2);
-        background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px; box-shadow:var(--shadow);
-      }
-      .how h2{font-family:"Atkinson Hyperlegible",sans-serif; font-size:1.1rem; color:var(--ink); margin:0 0 8px}
-      .how p{margin:0 0 10px} .how p:last-child{margin-bottom:0}
-      .how code{font-family:"IBM Plex Mono",monospace; font-size:.86em; background:var(--surface-2); padding:1px 6px; border-radius:5px}
-      footer{margin-top:22px; font-size:.85rem; color:var(--ink-3); text-align:center}
-      @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
-    </style>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=Six+Caps&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="lunajlee.com">
 <meta property="og:title" content="Minimum Payment Calculator — Luna Lee">
@@ -234,25 +18,23 @@
 <meta property="og:image" content="https://lunajlee.com/first90days/assets/credit.webp?v=2">
 <meta property="og:image:alt" content="A person reviewing a credit card bill and calculator">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css">
 <style>
-/* lunajlee.com global bar (injected) */
-.lj-bar{background:#2c2a26;color:#f7f2e9;font-size:13px;line-height:1.4}
-.lj-bar-inner{max-width:1120px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.lj-bar a{color:#f7f3ec;text-decoration:none;font-weight:700}
-.lj-bar a:hover{text-decoration:underline}
-.lj-bar .lj-brand{font-weight:900;letter-spacing:.02em}
-.lj-bar .lj-brand i{color:#d19172;font-style:normal}
-.lj-bar nav{display:flex;gap:16px}
-.lj-foot{max-width:1120px;margin:0 auto;padding:22px 20px 34px;font-size:13px;color:#5b6573;border-top:1px solid rgba(128,128,128,.25)}
-.lj-foot a{font-weight:700}
+/* Hallmark · shape: shared page shell · genre: editorial · theme: Broadside (deal 2/3, seed 4419c0ec) · redesign: full · copy: verbatim · posture: committed · v2.0.0 */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 · weakest: E, the common focus and overflow floors are explicit per route */
+html, body { overflow-x: clip; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+button:active { background-color: var(--color-paper-3); }
+button:disabled { opacity: .55; cursor: not-allowed; }
+.btn-reset { white-space: nowrap; }
 </style>
 </head>
   <body>
     <div class="lj-bar"><div class="lj-bar-inner"><a class="lj-brand" href="/">LUNA LEE <i>•</i> lunajlee.com</a><nav><a href="/">Home</a><a href="/first90days/">First 90 Days</a></nav></div></div>
     <div class="wrap">
 
+      <h1>The minimum-payment trap, in real numbers</h1>
       <span class="kicker">Teen Money Guide · Chapter 5</span>
-      <h1>The minimum-payment <span class="hl">trap</span>, in real numbers</h1>
       <p class="lede">
         In Chapter 5, a <strong>$1,200</strong> credit card balance at <strong>24.99% APR</strong> is paid off
         at just <strong>$35 a month</strong>. It takes <strong>61 months</strong> — and the card company collects
@@ -448,7 +230,7 @@
         function drawChart(result, balance){
           var wrap = $("chartWrap");
           if (result.never){
-            wrap.innerHTML = '<p style="color:var(--ink-2);margin:6px 0 2px">No chart — at this payment the balance never goes down, so there is no payoff curve to draw. Raise the payment above the monthly interest to see one.</p>';
+            wrap.innerHTML = '<p class="chart-empty">No chart — at this payment the balance never goes down, so there is no payoff curve to draw. Raise the payment above the monthly interest to see one.</p>';
             $("chartNote").textContent = "";
             return;
           }
@@ -468,30 +250,30 @@
           var grid = "";
           for (var g=0; g<=4; g++){
             var val = maxBal * g/4, y = Y(val);
-            grid += '<line x1="'+padL+'" y1="'+y+'" x2="'+(W-padR)+'" y2="'+y+'" stroke="var(--line)" stroke-width="1"/>'
-                  + '<text x="'+(padL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="12" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace">$'+Math.round(val).toLocaleString("en-US")+'</text>';
+            grid += '<line x1="'+padL+'" y1="'+y+'" x2="'+(W-padR)+'" y2="'+y+'" stroke="var(--color-rule)" stroke-width="1"/>'
+                  + '<text x="'+(padL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="12" fill="var(--color-muted)">$'+Math.round(val).toLocaleString("en-US")+'</text>';
           }
           // x labels: start, middle, end
           var mids = [0, Math.round(maxM/2), maxM];
           var xlab = "";
           for (var k=0;k<mids.length;k++){
             var m = mids[k];
-            xlab += '<text x="'+X(m)+'" y="'+(H-12)+'" text-anchor="middle" font-size="12" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace">Month '+m+'</text>';
+            xlab += '<text x="'+X(m)+'" y="'+(H-12)+'" text-anchor="middle" font-size="12" fill="var(--color-muted)">Month '+m+'</text>';
           }
           // halfway marker
           var halfIdx = pts.findIndex(function(b){ return b <= balance/2; });
           var marker = "";
           if (halfIdx > 0){
-            marker = '<circle cx="'+X(halfIdx)+'" cy="'+Y(pts[halfIdx])+'" r="5" fill="var(--surface)" stroke="var(--chart-good)" stroke-width="3"/>'
-                   + '<text x="'+X(halfIdx)+'" y="'+(Y(pts[halfIdx])-12)+'" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--good)">Half gone — month '+halfIdx+'</text>';
+            marker = '<circle cx="'+X(halfIdx)+'" cy="'+Y(pts[halfIdx])+'" r="5" fill="var(--color-paper)" stroke="var(--color-ink-2)" stroke-width="3"/>'
+                   + '<text x="'+X(halfIdx)+'" y="'+(Y(pts[halfIdx])-12)+'" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--color-ink-2)">Half gone — month '+halfIdx+'</text>';
           }
-          var endDot = '<circle cx="'+X(maxM)+'" cy="'+Y(0)+'" r="5" fill="var(--chart-good)"/>'
-                     + '<text x="'+(X(maxM)-4)+'" y="'+(Y(0)-12)+'" text-anchor="end" font-size="12.5" font-weight="700" fill="var(--good)">$0</text>';
+          var endDot = '<circle cx="'+X(maxM)+'" cy="'+Y(0)+'" r="5" fill="var(--color-ink-2)"/>'
+                     + '<text x="'+(X(maxM)-4)+'" y="'+(Y(0)-12)+'" text-anchor="end" font-size="12.5" font-weight="700" fill="var(--color-ink-2)">$0</text>';
           wrap.innerHTML =
             '<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Line chart of balance falling from '+money(balance)+' to zero over '+maxM+' months">'
             + grid + xlab
-            + '<path d="'+area+'" fill="var(--chart-fill)"/>'
-            + '<path d="'+path+'" fill="none" stroke="var(--chart-line)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>'
+            + '<path d="'+area+'" fill="color-mix(in oklab, var(--color-accent) 16%, transparent)"/>'
+            + '<path d="'+path+'" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>'
             + marker + endDot
             + '</svg>';
           $("chartNote").textContent = halfIdx > 0
