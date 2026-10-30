@@ -3,7 +3,7 @@
 Static site for lunajlee.com (no build step — plain HTML/CSS).
 
 - `index.html` — personal homepage
-- `first90days/` — First 90 Days teen money posts + Minimum Payment Calculator (`first90days/calculator/`)
+- `first90days/` — First 90 Days Teen Money Guide + Minimum Payment Calculator (`first90days/calculator/`)
 - `calculators/` — calculators landing page
 
 ## Deploy
