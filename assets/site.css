@@ -85,6 +85,7 @@ h1.sentence-case, .hero h1.sentence-case { font-family: var(--font-display-2); t
 /* Calculator directory: a practical index, set as rows rather than promo tiles. */
 .hero { padding: clamp(64px, 10vh, 116px) 0 var(--space-2xl); }
 .hero h1 { max-width: 12ch; margin: 0 0 var(--space-lg); font-size: clamp(4rem, 9vw, 8rem); }
+.hero.prose h1 { max-width: none; }
 .hero .lede { max-width: 62ch; }
 .section { padding: 0 0 var(--space-2xl); }
 .section-head h2, .toc > h2 { margin: 0 0 var(--space-sm); font-size: var(--text-section); }
