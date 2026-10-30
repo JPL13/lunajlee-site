@@ -4,57 +4,56 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="data:," />
     <title>Minimum Payment Calculator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
     <style>
       :root{
-        --bg:#f4f5f2;
-        --surface:#ffffff;
-        --surface-2:#eceee8;
-        --ink:#17211c;
-        --ink-2:#4b5850;
-        --ink-3:#76837a;
-        --line:#d8ddd2;
-        --line-strong:#b9c2b2;
-        --trap:#c33d1a;
-        --trap-bg:#fbe9e2;
-        --trap-ink:#8f2a0f;
-        --good:#0c6b4f;
-        --good-bg:#dff2e8;
-        --good-ink:#084c38;
-        --amber:#9a6a00;
-        --amber-bg:#fdf0cd;
-        --chart-line:#c33d1a;
-        --chart-fill:rgba(195,61,26,.12);
-        --chart-good:#0c6b4f;
-        --focus:#0c6b4f;
-        --shadow:0 1px 2px rgba(23,33,28,.06), 0 10px 30px rgba(23,33,28,.07);
+        --bg:#f7f2e9;
+        --surface:#fffdf8;
+        --surface-2:#eee8dd;
+        --ink:#282722;
+        --ink-2:#5d5a54;
+        --ink-3:#79736a;
+        --line:#ddd4c7;
+        --line-strong:#c5b9a8;
+        --trap:#98513d;
+        --trap-bg:#f2e3dc;
+        --trap-ink:#7b3d2d;
+        --good:#5d5b55;
+        --good-bg:#e9e6df;
+        --good-ink:#494640;
+        --amber:#916b44;
+        --amber-bg:#f3e9dc;
+        --chart-line:#98513d;
+        --chart-fill:rgba(152,81,61,.12);
+        --chart-good:#5d5b55;
+        --focus:#98513d;
+        --shadow:0 1px 2px rgba(40,39,34,.05), 0 10px 30px rgba(40,39,34,.07);
       }
       @media (prefers-color-scheme: dark){
         :root{
-          --bg:#121815;
-          --surface:#1b231f;
-          --surface-2:#232e28;
-          --ink:#eef2ec;
-          --ink-2:#b7c2b8;
-          --ink-3:#8b9a8e;
-          --line:#2f3c34;
-          --line-strong:#43534a;
-          --trap:#ff8a66;
-          --trap-bg:#3d211a;
-          --trap-ink:#ffb59d;
-          --good:#4fd1a0;
-          --good-bg:#17382c;
-          --good-ink:#8fe8c4;
-          --amber:#f2c14e;
-          --amber-bg:#3a2f10;
-          --chart-line:#ff8a66;
-          --chart-fill:rgba(255,138,102,.14);
-          --chart-good:#4fd1a0;
-          --focus:#4fd1a0;
+          --bg:#201e1a;
+          --surface:#292722;
+          --surface-2:#322e27;
+          --ink:#f0ebe1;
+          --ink-2:#c0b8aa;
+          --ink-3:#a49b8e;
+          --line:#494238;
+          --line-strong:#62584a;
+          --trap:#e1a18a;
+          --trap-bg:#442d26;
+          --trap-ink:#f0c0ad;
+          --good:#b9b2a7;
+          --good-bg:#36332e;
+          --good-ink:#ded7cc;
+          --amber:#d5a979;
+          --amber-bg:#3d3026;
+          --chart-line:#e1a18a;
+          --chart-fill:rgba(225,161,138,.14);
+          --chart-good:#b9b2a7;
+          --focus:#e1a18a;
           --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.25);
         }
       }
@@ -62,11 +61,11 @@
       html{-webkit-text-size-adjust:100%}
       body{
         margin:0; background:var(--bg); color:var(--ink);
-        font-family:"Public Sans", system-ui, -apple-system, sans-serif;
+        font-family:"Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
         font-size:16px; line-height:1.55;
       }
       .wrap{max-width:1120px; margin:0 auto; padding:28px 20px 56px}
-      a{color:var(--good)}
+      a{color:var(--trap)}
       :focus-visible{outline:3px solid var(--focus); outline-offset:2px; border-radius:4px}
 
       /* ---------- Header ---------- */
@@ -78,7 +77,7 @@
       }
       .kicker::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--trap)}
       h1{
-        font-family:"Bricolage Grotesque", "Public Sans", sans-serif;
+        font-family:"Atkinson Hyperlegible", sans-serif;
         font-size:clamp(2rem, 5.5vw, 3.4rem); line-height:1.02; letter-spacing:-.01em;
         font-weight:800; margin:16px 0 12px; max-width:16ch;
       }
@@ -98,7 +97,7 @@
       .btn-reset{
         margin-left:auto; align-self:center;
         font:inherit; font-weight:700; font-size:.9rem; cursor:pointer;
-        background:var(--ink); color:var(--bg); border:1px solid var(--ink);
+        background:var(--trap); color:#fff; border:1px solid var(--trap);
         border-radius:10px; padding:11px 16px;
       }
       .btn-reset:hover{opacity:.88}
@@ -112,7 +111,7 @@
         box-shadow:var(--shadow); padding:22px;
       }
       .card h2{
-        font-family:"Bricolage Grotesque","Public Sans",sans-serif;
+        font-family:"Atkinson Hyperlegible",sans-serif;
         font-size:1.25rem; font-weight:700; margin:0 0 4px; letter-spacing:-.01em;
       }
       .card .sub{color:var(--ink-2); font-size:.92rem; margin:0 0 18px}
@@ -156,7 +155,7 @@
         border:1px solid var(--line); border-radius:12px; padding:16px 18px; background:var(--surface-2);
       }
       .stat .l{font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3)}
-      .stat .v{font-family:"Bricolage Grotesque","Public Sans",sans-serif; font-size:2rem; font-weight:800; line-height:1.15; margin-top:2px}
+      .stat .v{font-family:"Atkinson Hyperlegible",sans-serif; font-size:2rem; font-weight:800; line-height:1.15; margin-top:2px}
       .stat .d{font-size:.86rem; color:var(--ink-2); margin-top:2px}
       .stat.danger .v{color:var(--trap)}
       .stat.good .v{color:var(--good)}
@@ -220,14 +219,34 @@
         margin-top:20px; font-size:.92rem; color:var(--ink-2);
         background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px; box-shadow:var(--shadow);
       }
-      .how h2{font-family:"Bricolage Grotesque","Public Sans",sans-serif; font-size:1.1rem; color:var(--ink); margin:0 0 8px}
+      .how h2{font-family:"Atkinson Hyperlegible",sans-serif; font-size:1.1rem; color:var(--ink); margin:0 0 8px}
       .how p{margin:0 0 10px} .how p:last-child{margin-bottom:0}
       .how code{font-family:"IBM Plex Mono",monospace; font-size:.86em; background:var(--surface-2); padding:1px 6px; border-radius:5px}
       footer{margin-top:22px; font-size:.85rem; color:var(--ink-3); text-align:center}
       @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
     </style>
-  </head>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="lunajlee.com">
+<meta property="og:title" content="Minimum Payment Calculator — Luna Lee">
+<meta property="og:description" content="See what paying only the minimum really costs: payoff time and total interest for any balance, APR, and payment.">
+<meta property="og:url" content="https://lunajlee.com/first90days/calculator/">
+<meta name="twitter:card" content="summary">
+<style>
+/* lunajlee.com global bar (injected) */
+.lj-bar{background:#2c2a26;color:#f7f2e9;font-size:13px;line-height:1.4}
+.lj-bar-inner{max-width:1120px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.lj-bar a{color:#f7f3ec;text-decoration:none;font-weight:700}
+.lj-bar a:hover{text-decoration:underline}
+.lj-bar .lj-brand{font-weight:900;letter-spacing:.02em}
+.lj-bar .lj-brand i{color:#d19172;font-style:normal}
+.lj-bar nav{display:flex;gap:16px}
+.lj-foot{max-width:1120px;margin:0 auto;padding:22px 20px 34px;font-size:13px;color:#5b6573;border-top:1px solid rgba(128,128,128,.25)}
+.lj-foot a{font-weight:700}
+</style>
+</head>
   <body>
+    <div class="lj-bar"><div class="lj-bar-inner"><a class="lj-brand" href="/">LUNA LEE <i>•</i> lunajlee.com</a><nav><a href="/">Home</a><a href="/first90days/">First 90 Days</a></nav></div></div>
     <div class="wrap">
 
       <span class="kicker">Teen Money Guide · Chapter 5</span>
@@ -619,5 +638,6 @@
         update();
       })();
     </script>
-  </body>
+  <div class="lj-foot">Part of <a href="/first90days/">First 90 Days</a> on <a href="/">lunajlee.com</a> — worked examples with stated assumptions; educational, not financial advice.</div>
+</body>
 </html>

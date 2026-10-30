@@ -1,0 +1,9 @@
+# macOS Finder metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows Explorer metadata
+Thumbs.db
+Desktop.ini

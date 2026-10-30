@@ -19,6 +19,10 @@ Production branch: `main`. Build command: none. Output directory: `/` (repo root
 | First 90 Days posts — lunajlee.com/first90days/ | `first90days/index.html` — all three posts live in this one file |
 | Post images | `first90days/assets/` (hero, paycheck, apartment, credit `.webp` files) |
 | Calculator (standalone) — lunajlee.com/first90days/calculator/ | `first90days/calculator/index.html` |
+| Shared look (fonts, colors, header, cards, footer) for the homepage + calculators page | `assets/site.css` |
+| Browser-tab icon | `favicon.svg` (charcoal rounded square, sans-serif L, rust dot) |
+
+The First 90 Days pages keep their own built-in styles (they were designed as a set); they carry a slim `lunajlee.com` bar on top injected as `.lj-bar` styles inside each file — edit those blocks in place if you ever need to change the bar.
 
 **One trap:** the Minimum Payment Calculator exists in *two* places — embedded inside `first90days/index.html` and standalone in `first90days/calculator/index.html`. If you ever change how the calculator works (not just wording around it), make the same change in both files, or the two copies will drift apart.
 
