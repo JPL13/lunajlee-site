@@ -17,6 +17,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<style>
+.hero h1.sentence-case { max-width: 18ch; font-size: clamp(3.5rem, 7vw, 6.75rem); }
+.portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.portfolio-grid .card:nth-child(2n) { border-right: 0; }
+@media (max-width: 900px) { .portfolio-grid .card:last-child { grid-column: auto; } }
+@media (max-width: 640px) { .portfolio-grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
@@ -28,7 +35,7 @@
 <main class="wrap">
 <section class="hero">
 <div class="eyebrow">Software engineer • Actuarial mathematician</div>
-<h1>Math, code, and money<br>explained with <em>real numbers.</em></h1>
+<h1 class="sentence-case">I like making the numbers make sense.</h1>
 <p class="lede">I'm Luna Lee — a backend software engineer (ex-Amazon Health, One Medical) with degrees in financial actuarial mathematics and statistics from UCLA. I build small, honest tools and write about money the way it actually works: with the arithmetic shown.</p>
 <div class="hero-stats">
 <div class="stat"><b>61 months</b><span>to pay off a $1,200 card at the $35 minimum — and $925.71 in interest</span></div>
@@ -38,8 +45,8 @@
 </section>
 
 <section class="section">
-<div class="section-head"><h2>Start here</h2><p>Three things live on this site right now — a money guide for teens, a set of actuarial calculators, and the formal-math project behind them.</p></div>
-<div class="card-grid">
+<div class="section-head"><h2>Start here</h2><p>Four things live here right now — a money guide, actuarial calculators, a boundary-setting tool, and the formal math behind the calculators.</p></div>
+<div class="card-grid portfolio-grid">
 <a class="card" href="/first90days/">
 <span class="kicker">Writing — free posts + full book</span>
 <h3>First 90 Days</h3>
@@ -57,6 +64,12 @@
 <h3>fm-formalization</h3>
 <p>Interest-theory mathematics formalized in Lean 4 with Mathlib — accumulation and discount factors and the geometric series behind the annuity formulas, proved with no <code>sorry</code>.</p>
 <span class="go">View on GitHub →</span>
+</a>
+<a class="card" href="https://boundary-app-khaki.vercel.app/tools/boundary-calculator">
+<span class="kicker">Interactive tool</span>
+<h3>Boundary App</h3>
+<p>A simple tool for putting a difficult situation into words and finding a clear next step.</p>
+<span class="go">Try Boundary App →</span>
 </a>
 </div>
 </section>
