@@ -15,26 +15,41 @@
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Six+Caps&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@500&family=Six+Caps&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-.hero h1.sentence-case { max-width: 18ch; font-size: clamp(3.5rem, 7vw, 6.75rem); }
-.portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.portfolio-grid .card:nth-child(2n) { border-right: 0; }
+.hero h1.sentence-case { max-width: 18ch; font-size: clamp(3rem, 5.7vw, 5.75rem); }
+.hero-stats .stat b { font-size: clamp(2.5rem, 4.4vw, 3.8rem); }
+.portfolio-list { border-top: var(--rule-bar) solid var(--color-ink); }
+.portfolio-row { display: grid; grid-template-columns: 3rem minmax(220px, .8fr) minmax(0, 1.5fr) auto; align-items: center; gap: var(--space-lg); padding: var(--space-lg) 0; border-bottom: var(--rule-hair) solid var(--color-rule); color: var(--color-ink); text-decoration: none; }
+.portfolio-row:hover .portfolio-title, .portfolio-row:hover .portfolio-link { color: var(--color-accent); }
+.portfolio-number { color: var(--color-accent); font: 500 clamp(1.8rem, 2.8vw, 2.5rem)/1 var(--font-numbers); font-variant-numeric: lining-nums tabular-nums; }
+.portfolio-name .kicker { display: block; margin-bottom: var(--space-xs); }
+.portfolio-title { margin: 0; font-size: clamp(1.4rem, 2.2vw, 2rem); transition: color var(--dur-micro) ease; }
+.portfolio-description { margin: 0; color: var(--color-ink-2); font-size: var(--text-md); }
+.portfolio-link { color: var(--color-ink); font-size: var(--text-md); font-weight: 600; text-decoration: underline; text-underline-offset: .2em; white-space: nowrap; }
 .hero-stats a.stat { display: flex; flex-direction: column; align-items: flex-start; color: inherit; text-decoration: none; }
 .hero-stats a.stat b { transition: color var(--dur-micro) ease; }
 .hero-stats a.stat:hover b { color: var(--color-accent); }
 .hero-stats a.stat .stat-action { margin-top: var(--space-sm); color: var(--color-accent); font-size: var(--text-sm); font-weight: 600; }
 .hero-stats a.stat:hover .stat-action { text-decoration: underline; text-underline-offset: .2em; }
-@media (max-width: 900px) { .portfolio-grid .card:last-child { grid-column: auto; } }
-@media (max-width: 640px) { .portfolio-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) {
+  .portfolio-row { grid-template-columns: 2.5rem minmax(0, 1fr) auto; gap: var(--space-md); }
+  .portfolio-description { grid-column: 2 / -1; grid-row: 2; }
+  .portfolio-link { grid-column: 3; grid-row: 1; }
+}
+@media (max-width: 640px) {
+  .portfolio-row { grid-template-columns: 2rem minmax(0, 1fr); align-items: start; gap: var(--space-sm) var(--space-md); padding: var(--space-lg) 0; }
+  .portfolio-description { grid-column: 2; grid-row: 2; }
+  .portfolio-link { grid-column: 2; grid-row: 3; white-space: normal; }
+}
 </style>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
 <a class="brand" href="/">LUNA LEE <span>•</span> lunajlee.com</a>
 <nav class="topnav" aria-label="Site">
-<a href="/" aria-current="page">Home</a><a href="/first90days/">First 90 Days</a><a href="/calculators/">Calculators</a><a href="https://github.com/JPL13">GitHub</a><a href="https://www.linkedin.com/in/juan-luna-piao">LinkedIn</a>
+<a href="/" aria-current="page">Home</a><a href="/first90days/">First 90 Days</a><a href="/calculators/">Calculators</a><a href="https://github.com/JPL13">GitHub</a>
 </nav></div></header>
 
 <main class="wrap">
@@ -51,30 +66,30 @@
 
 <section class="section">
 <div class="section-head"><h2>Selected work</h2><p>Writing and tools built around practical problems: understanding money, checking the math, and finding words for a difficult situation.</p></div>
-<div class="card-grid portfolio-grid">
-<a class="card" href="/first90days/">
-<span class="kicker">Writing — free posts + full book</span>
-<h3>First 90 Days</h3>
-<p>Written and built for teens living independently: worked examples for a first paycheck, apartment, and credit card, plus a free calculator. The complete 12-chapter book is on Gumroad for $15.</p>
-<span class="go">Read the free chapters →</span>
+<div class="portfolio-list">
+<a class="portfolio-row" href="/first90days/">
+<span class="portfolio-number" aria-hidden="true">01</span>
+<div class="portfolio-name"><span class="kicker">Writing — free posts + full book</span><h3 class="portfolio-title">First 90 Days</h3></div>
+<p class="portfolio-description">Written and built for teens moving out: worked examples for a first paycheck, apartment, and credit card, plus a free calculator. The full 12-chapter book is available on Gumroad for $15.</p>
+<span class="portfolio-link">Read the free chapters →</span>
 </a>
-<a class="card" href="/calculators/">
-<span class="kicker">Tools</span>
-<h3>FM Toolkit Calculators</h3>
-<p>Interactive interest theory and loan amortization tools for Exam FM, checked against known-answer examples. Try the free calculators or get the full bundle.</p>
-<span class="go">See the calculators →</span>
+<a class="portfolio-row" href="/calculators/">
+<span class="portfolio-number" aria-hidden="true">02</span>
+<div class="portfolio-name"><span class="kicker">Tools</span><h3 class="portfolio-title">FM Toolkit Calculators</h3></div>
+<p class="portfolio-description">Interactive interest theory and loan amortization tools for Exam FM, checked against known-answer examples. Try the free calculators or get the full bundle.</p>
+<span class="portfolio-link">See the calculators →</span>
 </a>
-<a class="card" href="https://github.com/JPL13/fm-formalization">
-<span class="kicker">Code</span>
-<h3>fm-formalization</h3>
-<p>Interest-theory results formalized in Lean 4 with Mathlib, including accumulation and discount factors and the geometric series behind annuity formulas.</p>
-<span class="go">View on GitHub →</span>
+<a class="portfolio-row" href="https://github.com/JPL13/fm-formalization">
+<span class="portfolio-number" aria-hidden="true">03</span>
+<div class="portfolio-name"><span class="kicker">Code</span><h3 class="portfolio-title">fm-formalization</h3></div>
+<p class="portfolio-description">Interest-theory results formalized in Lean 4 with Mathlib, including accumulation and discount factors and the geometric series behind annuity formulas.</p>
+<span class="portfolio-link">View on GitHub →</span>
 </a>
-<a class="card" href="https://boundary-app-khaki.vercel.app/tools/boundary-calculator">
-<span class="kicker">Interactive tool</span>
-<h3>Boundary App</h3>
-<p>An interactive boundary-setting tool for putting a difficult situation into words and finding a clear next step.</p>
-<span class="go">Try Boundary App →</span>
+<a class="portfolio-row" href="https://boundary-app-khaki.vercel.app/tools/boundary-calculator">
+<span class="portfolio-number" aria-hidden="true">04</span>
+<div class="portfolio-name"><span class="kicker">Interactive tool</span><h3 class="portfolio-title">Boundary App</h3></div>
+<p class="portfolio-description">An interactive boundary-setting tool for putting a difficult situation into words and finding a clear next step.</p>
+<span class="portfolio-link">Try Boundary App →</span>
 </a>
 </div>
 </section>
@@ -84,7 +99,7 @@
 <div class="footer-inner">
 <span class="footer-brand">LUNA LEE <span>•</span> lunajlee.com</span>
 <nav class="footer-links" aria-label="Footer">
-<a href="/first90days/">First 90 Days</a><a href="/calculators/">Calculators</a><a href="https://github.com/JPL13">GitHub</a><a href="https://www.linkedin.com/in/juan-luna-piao">LinkedIn</a><a href="https://quantkit.gumroad.com/l/dvggny">Gumroad</a>
+<a href="/first90days/">First 90 Days</a><a href="/calculators/">Calculators</a><a href="https://github.com/JPL13">GitHub</a><a href="https://quantkit.gumroad.com/l/dvggny">Gumroad</a>
 </nav>
 </div>
 <p class="footer-note">© 2026 Luna Lee. The numbers on this site are worked examples with stated assumptions — educational, not financial advice.</p>

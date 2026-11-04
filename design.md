@@ -17,7 +17,9 @@ The locked visual system for the personal site. All four routes share the same p
   --color-paper: oklch(92% 0.028 88); --color-paper-2: oklch(88.5% 0.032 88); --color-paper-3: oklch(85% 0.036 86);
   --color-ink: oklch(18% 0.01 50); --color-ink-2: oklch(30% 0.012 50); --color-muted: oklch(43% 0.02 62); --color-rule: oklch(75% 0.028 82);
   --color-accent: oklch(53% 0.19 33); --color-accent-ink: oklch(95.5% 0.018 88); --color-focus: oklch(53% 0.19 33);
-  --font-display: "Six Caps", "Impact", sans-serif; --font-display-2: "Source Serif 4", Georgia, serif;
+  --font-display: "Six Caps", "Impact", sans-serif; --font-display-2: "Fraunces", Georgia, serif;
+  --font-headline: var(--font-display-2);
+  --font-numbers: "IBM Plex Sans", "Archivo Narrow", ui-sans-serif, sans-serif;
   --font-body: "Archivo Narrow", "Arial Narrow", ui-sans-serif, sans-serif;
   --radius-card: 0; --radius-pill: 0; --rule-hair: 1px; --rule-bar: 5px; --shadow-card: none;
 }
