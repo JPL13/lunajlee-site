@@ -34,7 +34,7 @@ h2, h3, h4, .brand, .footer-brand, .work-main h3, .example-content h2, .work-hea
 .intro-copy { max-width: 840px; }
 .intro .eyebrow { margin: 0 0 var(--space-lg); }
 .intro h1 { max-width: 12ch; margin: 0 0 var(--space-lg); font-size: clamp(4rem, 9vw, 8.5rem); line-height: .96; }
-h1.sentence-case, .hero h1.sentence-case { font-family: var(--font-display-2); text-transform: none; letter-spacing: 0; line-height: 1.04; }
+h1.sentence-case, .hero h1.sentence-case { font-family: "Fraunces", var(--font-display-2); font-weight: 500; text-transform: none; letter-spacing: 0; line-height: 1.04; }
 .intro h1 em { color: inherit; font-style: normal; }
 .lede, .intro .lede { max-width: 56ch; margin: 0; color: var(--color-ink-2); font-size: var(--text-lead); line-height: 1.5; }
 .intro-links { display: flex; flex-wrap: wrap; gap: var(--space-lg); margin: var(--space-xl) 0 0; font-size: var(--text-sm); }
